@@ -11,6 +11,28 @@ In short, you need to respect to license of the project. You cannot copy the sou
 
 ---
 
+## Build instructions / 编译指南
+
+中文版编译教程请参考： [构建自己的iOS网络代理客户端](https://tlanyan.me/build-your-ios-vpn-client/)，可能遇到的问题及解决方案请参考： [构建Potatso问题集锦及解决方案](https://tlanyan.me/build-potatso-problems-and-solutions/)。
+
+
+### 1. Install Cocospods
+
+If you already have `pod` command, please skip this step.
+
+1. update gem: `sudo gem update --system`;
+2. install Cocospods: `sudo gem install cocoapods`.
+
+### 2. Build Potatso
+
+1. clone the repo: `git clone https://github.com/tlanyan/Potatso.git`;
+2. init submodules: `cd Potatso; git submodule update --init`;
+3. install Pod dependencies: `pod install --verbose`;
+4. open the project with Xcode, and change the Bundle ID of targets: "Potatso", "packetTunnel" and "TodayWidget";
+5. change the app group ID of targets mentioned above;
+6. Open "PotatsoBase/Potatso.m", modify the return value of function `shareGroupIdentifier` to your group ID;
+7. connect your iOS device to the computer, click "Build and run".
+
 ## What is it?
 
 Potatso is an iOS client that implements custom proxies with the leverage of Network Extension framework introduced by Apple since iOS 9.
