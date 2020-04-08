@@ -44,6 +44,7 @@ Potatso.xcworkspace/xcshareddata/
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 Pods/
+!Pods/ICSPullToRefresh
 # Add Podfile.lock for future maintenance reason
 #Podfile.lock
 
