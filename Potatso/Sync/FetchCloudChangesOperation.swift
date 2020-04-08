@@ -41,7 +41,7 @@ class FetchCloudChangesOperation: PSOperations.Operation {
                            completionHandler: @escaping (NSError?) -> ()) {
         
         let fetchOperation = CKFetchRecordChangesOperation(recordZoneID: zoneID, previousServerChangeToken: changeToken)
-        fetchOperation.resultsLimit = CKQueryOperationMaximumResults
+        fetchOperation.resultsLimit = CKQueryOperation.maximumResults
         var results = FetchResults()
         
         // Enable resultsLimit to test moreComing

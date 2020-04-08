@@ -14,7 +14,7 @@
 #import <openssl/x509.h>
 #import <openssl/err.h>
 #import <StoreKit/StoreKit.h>
-#import <Crashlytics/Crashlytics.h>
+//#import <Crashlytics/Crashlytics.h>
 #import "Appirater.h"
 #import "Potatso-Swift.h"
 
