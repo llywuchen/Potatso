@@ -36,8 +36,8 @@ target "Potatso" do
     pod 'ICSPullToRefresh', '~> 0.6'
     pod 'ISO8601DateFormatter', '~> 0.8'
     pod 'Alamofire'
-    pod 'ObjectMapper'
-    pod 'CocoaLumberjack/Swift', '~> 3.0.0'
+    pod 'ObjectMapper','~> 3.4.0'
+    pod 'CocoaLumberjack/Swift', '~> 3.5.2'
     pod 'PSOperations'
     tunnel
     library
@@ -65,7 +65,7 @@ end
 target "PotatsoLibrary" do
     library
     model
-    # YAML-Framework 0.0.3 is not available in cocoapods so we install it from local using git submodule
+#     YAML-Framework 0.0.3 is not available in cocoapods so we install it from local using git submodule
     pod 'YAML-Framework', :path => "./Library/YAML-Framework"
 end
 
