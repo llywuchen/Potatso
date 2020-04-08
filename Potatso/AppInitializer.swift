@@ -14,7 +14,7 @@ let appID = "1070901416"
 
 class AppInitializer: NSObject, AppLifeCycleProtocol {
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configLogging()
         configAppirater()
 
@@ -27,13 +27,13 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
 
     func configLogging() {
         let fileLogger = DDFileLogger() // File Logger
-        fileLogger?.rollingFrequency = TimeInterval(60*60*24*3)  // 24 hours
-        fileLogger?.logFileManager.maximumNumberOfLogFiles = 7
+        fileLogger.rollingFrequency = TimeInterval(60*60*24*3)  // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
         DDLog.add(fileLogger)
 
         #if DEBUG
-            DDLog.add(DDTTYLogger.sharedInstance()) // TTY = Xcode console
-            DDLog.add(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
+            DDLog.add(DDTTYLogger.sharedInstance) // TTY = Xcode console
+            DDLog.add(DDASLLogger.sharedInstance) // ASL = Apple System Logs
             DDLog.setLevel(DDLogLevel.all, for: DDTTYLogger.self)
             DDLog.setLevel(DDLogLevel.all, for: DDASLLogger.self)
         #else

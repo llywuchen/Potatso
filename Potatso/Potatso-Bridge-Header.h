@@ -18,6 +18,6 @@
 @import PotatsoModel;
 @import PotatsoBase;
 @import Appirater;
-@import Crashlytics;
+//@import Crashlytics;
 
 #endif /* Potatso_Bridge_Header_h */

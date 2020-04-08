@@ -57,7 +57,7 @@ class ConfigGroupChooseWindow: UIWindow {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(chooseVC.view)
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfigGroupChooseWindow.onStatusBarFrameChange), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfigGroupChooseWindow.onStatusBarFrameChange), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -94,7 +94,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        token = groups.addNotificationBlock { [unowned self] (changed) in
+        token = groups._observe { [unowned self] (changed) in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
                 self.tableView.beginUpdates()
@@ -113,7 +113,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        token?.stop()
+        token?.invalidate()
     }
 
     @objc func onVPNStatusChanged() {
@@ -163,11 +163,11 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
         return groups.count > 1
     }
 
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    private func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item: ConfigurationGroup
             guard indexPath.row < groups.count else {

@@ -5,7 +5,7 @@ import PSOperations
 
 struct FetchResults {
     var changedRecords: [CKRecord] = []
-    var deletedRecordIDs: [CKRecordID] = []
+    var deletedRecordIDs: [CKRecord.ID] = []
     
     var count: Int {
         return changedRecords.count + deletedRecordIDs.count
@@ -14,14 +14,14 @@ struct FetchResults {
 
 class FetchCloudChangesOperation: PSOperations.Operation {
     
-    let zoneID: CKRecordZoneID
+    let zoneID: CKRecordZone.ID
     var changeToken: CKServerChangeToken?
     
     let delayOperationQueue = PSOperations.OperationQueue()
     let maximumRetryAttempts: Int
     var retryAttempts: Int = 0
 
-    init(zoneID: CKRecordZoneID, maximumRetryAttempts: Int = 3) {
+    init(zoneID: CKRecordZone.ID, maximumRetryAttempts: Int = 3) {
         self.zoneID = zoneID
         self.maximumRetryAttempts = maximumRetryAttempts
         super.init()
@@ -30,7 +30,7 @@ class FetchCloudChangesOperation: PSOperations.Operation {
     
     override func execute() {
         changeToken = getZoneChangeToken(zoneID)
-        DDLogInfo(">>> \(self.name!) started with token: \(changeToken)")
+        DDLogInfo(">>> \(self.name!) started with token: \(String(describing: changeToken))")
         fetchCloudChanges(changeToken) {
             (nsError) in
             self.finishWithError(nsError)
@@ -38,7 +38,7 @@ class FetchCloudChangesOperation: PSOperations.Operation {
     }
     
     func fetchCloudChanges(_ changeToken: CKServerChangeToken?,
-                           completionHandler: @escaping (NSError!) -> ()) {
+                           completionHandler: @escaping (NSError?) -> ()) {
         
         let fetchOperation = CKFetchRecordChangesOperation(recordZoneID: zoneID, previousServerChangeToken: changeToken)
         fetchOperation.resultsLimit = CKQueryOperationMaximumResults

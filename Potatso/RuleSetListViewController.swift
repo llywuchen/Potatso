@@ -38,7 +38,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
         navigationItem.title = "Rule Set".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         reloadData()
-        token = ruleSets.addNotificationBlock { [unowned self] (changed) in
+        token = ruleSets._observe { [unowned self] (changed) in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
                 self.tableView.beginUpdates()
@@ -58,7 +58,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        token?.stop()
+        token?.invalidate()
     }
 
     func reloadData() {
@@ -105,7 +105,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
         if let height = heightAtIndex[indexPath.row] {
             return height
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
 
@@ -113,11 +113,11 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
         return chooseCallback == nil
     }
 
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item: RuleSet
             guard indexPath.row < ruleSets.count else {
@@ -151,7 +151,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
         v.tableFooterView = UIView()
         v.tableHeaderView = UIView()
         v.separatorStyle = .singleLine
-        v.rowHeight = UITableViewAutomaticDimension
+        v.rowHeight = UITableView.automaticDimension
         return v
     }()
 
