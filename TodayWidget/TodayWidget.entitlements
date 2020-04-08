@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.io.wasin.potatso</string>
+		<string>group.com.lly.potatso</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>

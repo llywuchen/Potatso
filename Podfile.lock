@@ -49,11 +49,11 @@ PODS:
     - PSOperations/Core
   - PSOperations/Passbook (4.1.0):
     - PSOperations/Core
-  - Realm (2.10.2):
-    - Realm/Headers (= 2.10.2)
-  - Realm/Headers (2.10.2)
-  - RealmSwift (2.10.2):
-    - Realm (= 2.10.2)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
   - Reveal-iOS-SDK (1.6.2)
   - SwiftColor (0.4.0)
   - YAML-Framework (0.0.3):
@@ -79,13 +79,13 @@ DEPENDENCIES:
   - MMWormhole (~> 2.0.0)
   - ObjectMapper
   - PSOperations
-  - RealmSwift (~> 2.10.2)
+  - RealmSwift (~> 4.3.2)
   - Reveal-iOS-SDK (~> 1.6.2)
   - SwiftColor
   - YAML-Framework (from `./Library/YAML-Framework`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Appirater
     - AsyncSwift
@@ -121,15 +121,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
-  Aspects: 8ac2b7220e45929088e0c5330397540577e65e6a
+  Aspects: 35254a4a73948e7bc1118ce0554674f77467a80b
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
-  CallbackURLKit: 160c6c5eac9bee66d31eb5b3dcfe31197c073946
+  CallbackURLKit: 1a56181ef8d6a1491865041b2192dd8c9a364669
   Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   ICDMaterialActivityIndicatorView: 3f02a9dc9e52417023a98385d631c93d3f95c465
-  ICSMainFramework: e2cfdd3bac03573d48c890a70190e9bfac051ed8
+  ICSMainFramework: 56240e9556d3b0755fc9c934a91ee8ebd09cb753
   ICSPullToRefresh: a64f102c6558cc34270ea60e99df7c91d1f3d2c0
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
@@ -139,12 +139,12 @@ SPEC CHECKSUMS:
   MMWormhole: 0cd3fd35a9118b2e2d762b499f54eeaace0be791
   ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
   PSOperations: bf25e1fdeb84940be0e22220a41a5bd690449c2f
-  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
-  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SwiftColor: c240d8cb2e1a29d731ae8deca8739eac6b9c56bd
-  YAML-Framework: e63ac91e0494f10022bd311fa3f12d963f6233e7
+  YAML-Framework: 4143807db7155936f3b00facd6e5c22bd338cd50
 
-PODFILE CHECKSUM: 921ef673d451a839701d3ce09dc389de8b72fbf3
+PODFILE CHECKSUM: 6f4948d12adba84e45f8063ddca98efb24c079de
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.8.4
